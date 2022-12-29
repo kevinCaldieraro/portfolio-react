@@ -18,10 +18,10 @@ export const Logo = styled(Link)`
   text-decoration: none;
 `;
 
-export const PortfolioLink = styled(Link)`
+export const LinkTo = styled(Link)`
   text-decoration: none;
 `;
 
-export const ContactLink = styled(Link)`
+export const Anchor = styled.a`
   text-decoration: none;
 `;

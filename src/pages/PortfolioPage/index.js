@@ -1,5 +1,21 @@
 import React from 'react';
 
-const PortfolioPage = () => <h1>Portfolio page</h1>;
+import { Container } from './style';
+
+import Header from '../../components/Header';
+
+const PortfolioPage = () => {
+  const menuItems = [
+    { name: 'Techs', type: 'Anchor' },
+    { name: 'Projetos', type: 'Anchor' },
+    { name: 'Contato', type: 'Link' }
+  ];
+
+  return (
+    <Container>
+      <Header menuItems={menuItems} />
+    </Container>
+  );
+};
 
 export default PortfolioPage;

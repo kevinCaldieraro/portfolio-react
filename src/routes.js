@@ -8,7 +8,7 @@ export default function Rts() {
   return (
     <Router>
       <Routes>
-        <Route path="/portfolio" element={<Portfolio />} />
+        <Route path="/Portfólio" element={<Portfolio />} />
         <Route path="/" element={<MainPage />} />
       </Routes>
     </Router>
