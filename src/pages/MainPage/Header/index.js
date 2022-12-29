@@ -3,8 +3,8 @@ import { Container, Logo, PortfolioLink, ContactLink } from './style';
 
 const Header = () => (
   <Container>
-    <Logo>&lt;KC/&gt;</Logo>
-    <PortfolioLink>Portfólio</PortfolioLink>
+    <Logo to="/">&lt;KC/&gt;</Logo>
+    <PortfolioLink to="/portfolio">Portfólio</PortfolioLink>
     <ContactLink>Contato</ContactLink>
   </Container>
 );

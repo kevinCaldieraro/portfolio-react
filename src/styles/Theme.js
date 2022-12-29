@@ -45,10 +45,10 @@ const theme = {
   fonts: ['Poppins, Open Sans', 'Arial', 'Helvetica', 'sans-serif'].join(','),
   fontSizes: {
     small: '.8rem',
-    normal: '1rem',
+    normal: '1.1rem',
     large: '2rem',
-    title: '1.3rem',
-    subtitle: '1.25rem'
+    title: '1.5rem',
+    subtitle: '1.3rem'
   },
   breakpoints: {
     xs: '0',
