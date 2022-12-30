@@ -1,9 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Container, Logo, LinkTo, Anchor } from './style';
+import {
+  Container,
+  Hamburguer,
+  HamburguerLines,
+  NavMenu,
+  Logo,
+  LinkTo,
+  Anchor
+} from './style';
 
 const Header = ({ menuItems }) => {
-  const menu = menuItems.map(({ name, type }, index) => {
+  const [menuState, setMenuState] = useState('hidden');
+
+  const toggleMenu = () => {
+    if (menuState === 'hidden') {
+      setMenuState('active');
+    } else {
+      setMenuState('hidden');
+    }
+  };
+
+  const menu = menuItems.map(({ name, type }) => {
     if (type === 'Link') {
       return (
         <LinkTo to={`/${name}`} key={name}>
@@ -13,7 +31,11 @@ const Header = ({ menuItems }) => {
     }
 
     return (
-      <Anchor href={`#${name}`} key={name}>
+      <Anchor
+        href={`#${name}`}
+        key={name}
+        onClick={() => setMenuState('hidden')}
+      >
         {name}
       </Anchor>
     );
@@ -22,7 +44,12 @@ const Header = ({ menuItems }) => {
   return (
     <Container>
       <Logo to="/">&lt;KC/&gt;</Logo>
-      {menu}
+      <Hamburguer onClick={toggleMenu}>
+        <HamburguerLines />
+        <HamburguerLines />
+        <HamburguerLines />
+      </Hamburguer>
+      <NavMenu className={menuState}>{menu}</NavMenu>
     </Container>
   );
 };

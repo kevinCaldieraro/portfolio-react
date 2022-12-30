@@ -8,7 +8,11 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
-  html, body, #root {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body, #root {
     min-height: 100vh;
   }
 
@@ -20,6 +24,7 @@ export default createGlobalStyle`
   a {
     color: ${props => props.theme.colors.link}
   }
+  
   a.hover {
     text-decoration: underline;
   }

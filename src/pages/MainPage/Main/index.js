@@ -13,7 +13,7 @@ import {
 
 import { ImGithub, ImLinkedin } from 'react-icons/im';
 
-import illustrationHome from '../../../assets/images/illustrationHome.png';
+import illustrationHome from '../../../assets/images/homeImgs/illustrationHome.png';
 
 const Main = () => (
   <Container>
