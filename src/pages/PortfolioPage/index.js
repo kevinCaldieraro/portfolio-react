@@ -3,6 +3,8 @@ import React from 'react';
 import { Container } from './style';
 
 import Header from '../../components/Header';
+import Main from './Main';
+import Footer from '../../components/Footer';
 
 const PortfolioPage = () => {
   const menuItems = [
@@ -14,6 +16,8 @@ const PortfolioPage = () => {
   return (
     <Container>
       <Header menuItems={menuItems} />
+      <Main />
+      <Footer />
     </Container>
   );
 };

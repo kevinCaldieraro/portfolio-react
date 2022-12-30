@@ -18,14 +18,14 @@ import illustrationHome from '../../../assets/images/illustrationHome.png';
 const Main = () => (
   <Container>
     <Title>
-      Olá! Eu sou <Name>Kevin Caldieraro</Name>. Desenvolvedor front-end.
+      Olá! Eu sou <Name>Kevin Caldieraro</Name>. Desenvolvedor Frontend.
     </Title>
     <Content>
       <Description>
         Finalizei meu EMI Técnico em Informática no IFRS em 2021 e atualmente
-        estou estudando diariamente JS e ReactJS. Minha maior motivação para
-        estudar programação é saber que existem muitos problemas à serem
-        resolvidos que podem ser automatizados com a tecnologia.
+        atuo como desenvolvedor Frontend. Minha maior motivação para estudar
+        programação é saber que existem muitos problemas à serem resolvidos que
+        podem ser automatizados com a tecnologia.
       </Description>
       <SocialMedias>
         <SocialMedia

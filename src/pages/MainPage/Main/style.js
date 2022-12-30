@@ -3,9 +3,11 @@ import styled from 'styled-components';
 export const Container = styled.main`
   padding: 0 2rem;
   flex: 1;
+  margin-top: 1.5rem;
 `;
 
 export const Title = styled.h1`
+  margin-top: 0;
   font-size: 2.5rem;
   line-height: 3.3rem;
 `;

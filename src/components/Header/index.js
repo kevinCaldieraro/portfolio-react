@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Container, Logo, LinkTo, Anchor } from './style';
 
 const Header = ({ menuItems }) => {
-  const menu = menuItems.map(({ name, type }) => {
+  const menu = menuItems.map(({ name, type }, index) => {
     if (type === 'Link') {
       return (
         <LinkTo to={`/${name}`} key={name}>
@@ -12,7 +12,11 @@ const Header = ({ menuItems }) => {
       );
     }
 
-    return <Anchor href={`#${name}`}>{name}</Anchor>;
+    return (
+      <Anchor href={`#${name}`} key={name}>
+        {name}
+      </Anchor>
+    );
   });
 
   return (
@@ -24,10 +28,12 @@ const Header = ({ menuItems }) => {
 };
 
 Header.propTypes = {
-  menuItems: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired
-  }).isRequired
+  menuItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      type: PropTypes.string.isRequired
+    }).isRequired
+  )
 };
 
 export default Header;
