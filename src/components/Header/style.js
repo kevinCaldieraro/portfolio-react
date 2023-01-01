@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
+  background: ${props => props.theme.colors.dark};
+  position: fixed;
+  top: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -37,8 +40,8 @@ export const NavMenu = styled.div`
   height: 100vh;
   width: 100%;
   position: absolute;
-  top: -100%;
-  left: 0;
+  top: 0;
+  left: -100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -49,14 +52,14 @@ export const NavMenu = styled.div`
 
   &.active {
     visibility: visible;
-    top: 0;
+    left: 0;
   }
 
   @media screen and (min-width: 500px) {
     background: transparent;
     position: relative;
     visibility: visible;
-    top: 0;
+    left: 0;
     height: auto;
     width: auto;
     display: flex;

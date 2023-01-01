@@ -12,3 +12,7 @@ export const Title = styled.h2`
   font-weight: 500;
   margin-bottom: 1.5rem;
 `;
+
+export const Form = styled.form`
+  background-color: blue;
+`;
