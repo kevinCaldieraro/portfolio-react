@@ -14,5 +14,47 @@ export const Title = styled.h2`
 `;
 
 export const Form = styled.form`
-  background-color: blue;
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+`;
+
+export const Label = styled.label`
+  display: block;
+  margin-bottom: 0.5rem;
+`;
+
+export const Input = styled.input`
+  width: 100%;
+  padding: 0.2rem 0.5rem;
+  color: ${props => props.theme.colors.carbonDark};
+
+  &::placeholder {
+    color: ${props => props.theme.colors.champagneDark};
+  }
+`;
+
+export const Message = styled.textarea`
+  width: 100%;
+  padding: 0.3rem 0.5rem;
+  color: ${props => props.theme.colors.carbonDark};
+  resize: vertical;
+  min-height: 150px;
+
+  &::placeholder {
+    color: ${props => props.theme.colors.champagneDark};
+  }
+`;
+
+export const Button = styled.button`
+  background: ${props => props.theme.colors.blue};
+  padding: 0.5rem 1.5rem;
+  align-self: center;
+  border: none;
+  border-radius: 3px;
+  transition: 0.5s;
+
+  &:hover {
+    opacity: 0.8;
+  }
 `;

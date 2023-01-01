@@ -13,7 +13,7 @@ export default createGlobalStyle`
   }
 
   body, #root {
-    min-height: 100vh;
+    min-height: calc(100vh - 100px);
   }
 
   body {
