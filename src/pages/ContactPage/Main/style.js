@@ -14,7 +14,7 @@ export const Title = styled.h2`
 `;
 
 export const ProgressbarContainer = styled.div`
-  background: #fff;
+  background: ${props => props.theme.colors.carbonDark};
   width: 100%;
   height: 15px;
   padding: 0 2px;
@@ -25,7 +25,7 @@ export const ProgressbarContainer = styled.div`
 `;
 
 export const Progressbar = styled.div`
-  background: blue;
+  background: ${props => props.width === '100%' ? props.theme.colors.green : props.theme.colors.blue};
   width: ${props => props.width || 0};
   height: 11px;
   border-radius: 2px;

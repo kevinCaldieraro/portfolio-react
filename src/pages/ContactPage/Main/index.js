@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { Container, Title, ProgressbarContainer, Progressbar, Form, Label, Input, Message, Button } from './style';
 
@@ -21,40 +21,31 @@ const Main = () => {
     });
   };
 
-  const checkFields = (fieldName, e) => {
-    if(fieldName === 'name') {
-      setName(e.target.value)
-      if(name.length >= 1 && control.nameControl === false) {
-        setWidth(width + 33);
-        setControl({...control, nameControl: true});
-      } else if (name.length === 1){
-        setWidth(width - 33);
-        setControl({...control, nameControl: false});
-      }
+  useEffect(() => {
+    if(name.length >= 2 && control.nameControl === false) {
+      setWidth(width + 33);
+      setControl({...control, nameControl: true});
+    } else if (name.length < 2 && control.nameControl === true) {
+      setWidth(width - 33);
+      setControl({...control, nameControl: false});
     }
 
-    if(fieldName === 'email') {
-      setEmail(e.target.value)
-      if(email.length >= 1 && control.emailControl === false) {
-        setWidth(width + 33);
-        setControl({...control, emailControl: true});
-      } else if (email.length === 1){
-        setWidth(width - 33);
-        setControl({...control, emailControl: false});
-      }
+    if(email.length >= 2 && control.emailControl === false) {
+      setWidth(width + 33);
+      setControl({...control, emailControl: true});
+    } else if (email.length < 2 && control.emailControl === true) {
+      setWidth(width - 33);
+      setControl({...control, emailControl: false});
     }
 
-    if(fieldName === 'message') {
-      setMessage(e.target.value)
-      if(message.length >= 1 && control.messageControl === false) {
-        setWidth(width + 34);
-        setControl({...control, messageControl: true});
-      } else if (message.length === 1){
-        setWidth(width - 34);
-        setControl({...control, messageControl: false});
-      }
+    if(message.length >= 3 && control.messageControl === false) {
+      setWidth(width + 34);
+      setControl({...control, messageControl: true});
+    } else if (message.length < 3 && control.messageControl === true) {
+      setWidth(width - 34);
+      setControl({...control, messageControl: false});
     }
-  }
+  }, [width, control, name, email, message]);
 
   const BtnSubmit = () => {
     if (width === 100) {
@@ -79,7 +70,7 @@ const Main = () => {
             id="name"
             placeholder="Nome"
             value={name}
-            onChange={e => checkFields('name', e)}
+            onChange={e => setName(e.target.value)}
           />
         </div>
         <div>
@@ -90,7 +81,7 @@ const Main = () => {
             id="email"
             placeholder="Email"
             value={email}
-            onChange={e => checkFields('email', e)}
+            onChange={e => setEmail(e.target.value)}
           />
         </div>
         <div>
@@ -100,7 +91,7 @@ const Main = () => {
             id="message"
             placeholder="Mensagem"
             value={message}
-            onChange={e => checkFields('message', e)}
+            onChange={e => setMessage(e.target.value)}
           />
         </div>
         <BtnSubmit />
