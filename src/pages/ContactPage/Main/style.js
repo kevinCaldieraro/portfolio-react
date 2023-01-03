@@ -13,6 +13,25 @@ export const Title = styled.h2`
   margin-bottom: 1.5rem;
 `;
 
+export const ProgressbarContainer = styled.div`
+  background: #fff;
+  width: 100%;
+  height: 15px;
+  padding: 0 2px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.8rem;
+  border-radius: 2px;
+`;
+
+export const Progressbar = styled.div`
+  background: blue;
+  width: ${props => props.width || 0};
+  height: 11px;
+  border-radius: 2px;
+  transition: 0.5s;
+`;
+
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
@@ -30,7 +49,7 @@ export const Input = styled.input`
   color: ${props => props.theme.colors.carbonDark};
 
   &::placeholder {
-    color: ${props => props.theme.colors.champagneDark};
+    color: ${props => props.theme.colors.metalDark};
   }
 `;
 
@@ -42,19 +61,29 @@ export const Message = styled.textarea`
   min-height: 150px;
 
   &::placeholder {
-    color: ${props => props.theme.colors.champagneDark};
+    color: ${props => props.theme.colors.metalDark};
   }
 `;
 
 export const Button = styled.button`
-  background: ${props => props.theme.colors.blue};
   padding: 0.5rem 1.5rem;
   align-self: center;
   border: none;
   border-radius: 3px;
   transition: 0.5s;
 
-  &:hover {
-    opacity: 0.8;
+  &:disabled {
+    cursor: not-allowed;
+    color: ${props => props.theme.colors.metalDark};
+    background: ${props => props.theme.colors.carbon};
+  }
+
+  &:enabled {
+    color: ${props => props.theme.colors.text};
+    background: ${props => props.theme.colors.blue};
+
+    &:hover {
+      opacity: 0.7;
+    }
   }
 `;

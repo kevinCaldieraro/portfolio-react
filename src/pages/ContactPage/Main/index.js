@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 
-import { Container, Title, Form, Label, Input, Message, Button } from './style';
+import { Container, Title, ProgressbarContainer, Progressbar, Form, Label, Input, Message, Button } from './style';
 
 const Main = () => {
+  const [control, setControl] = useState({nameControl: false, emailControl: false, messageControl: false})
+  const [width, setWidth] = useState(0);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
@@ -12,16 +14,62 @@ const Main = () => {
     fetch('https://api.sheetmonkey.io/form/cqz4b1uogro4siFfCkVxQH', {
       method: 'post',
       headers: {
-        Accept: 'application/json',
+        'Accept': 'application/json',
         'Content-type': 'application/json'
       },
       body: JSON.stringify({ name, email, message })
     });
   };
 
+  const checkFields = (fieldName, e) => {
+    if(fieldName === 'name') {
+      setName(e.target.value)
+      if(name.length >= 1 && control.nameControl === false) {
+        setWidth(width + 33);
+        setControl({...control, nameControl: true});
+      } else if (name.length === 1){
+        setWidth(width - 33);
+        setControl({...control, nameControl: false});
+      }
+    }
+
+    if(fieldName === 'email') {
+      setEmail(e.target.value)
+      if(email.length >= 1 && control.emailControl === false) {
+        setWidth(width + 33);
+        setControl({...control, emailControl: true});
+      } else if (email.length === 1){
+        setWidth(width - 33);
+        setControl({...control, emailControl: false});
+      }
+    }
+
+    if(fieldName === 'message') {
+      setMessage(e.target.value)
+      if(message.length >= 1 && control.messageControl === false) {
+        setWidth(width + 34);
+        setControl({...control, messageControl: true});
+      } else if (message.length === 1){
+        setWidth(width - 34);
+        setControl({...control, messageControl: false});
+      }
+    }
+  }
+
+  const BtnSubmit = () => {
+    if (width === 100) {
+      return <Button type="submit" enabled>Enviar</Button>
+    } else {
+      return <Button type="submit" disabled>Enviar</Button>
+    }
+  }
+
   return (
     <Container>
       <Title>Contato</Title>
+      <ProgressbarContainer>
+        <Progressbar width={`${width}%`} />
+      </ProgressbarContainer>
       <Form onSubmit={handleSubmit}>
         <div>
           <Label htmlFor="name">Insira seu nome</Label>
@@ -31,7 +79,7 @@ const Main = () => {
             id="name"
             placeholder="Nome"
             value={name}
-            onChange={e => setName(e.target.value)}
+            onChange={e => checkFields('name', e)}
           />
         </div>
         <div>
@@ -42,7 +90,7 @@ const Main = () => {
             id="email"
             placeholder="Email"
             value={email}
-            onChange={e => setEmail(e.target.value)}
+            onChange={e => checkFields('email', e)}
           />
         </div>
         <div>
@@ -52,10 +100,10 @@ const Main = () => {
             id="message"
             placeholder="Mensagem"
             value={message}
-            onChange={e => setMessage(e.target.value)}
+            onChange={e => checkFields('message', e)}
           />
         </div>
-        <Button type="submit">Enviar</Button>
+        <BtnSubmit />
       </Form>
     </Container>
   );
