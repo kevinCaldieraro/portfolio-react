@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Container,
+  HeaderS,
   Hamburguer,
   HamburguerLines,
   NavMenu,
@@ -43,13 +44,15 @@ const Header = ({ menuItems }) => {
 
   return (
     <Container>
-      <Logo to="/">&lt;KC/&gt;</Logo>
-      <Hamburguer onClick={toggleMenu}>
-        <HamburguerLines />
-        <HamburguerLines />
-        <HamburguerLines />
-      </Hamburguer>
-      <NavMenu className={menuState}>{menu}</NavMenu>
+      <HeaderS>
+        <Logo to="/">&lt;KC/&gt;</Logo>
+        <Hamburguer onClick={toggleMenu}>
+          <HamburguerLines />
+          <HamburguerLines />
+          <HamburguerLines />
+        </Hamburguer>
+        <NavMenu className={menuState}>{menu}</NavMenu>
+      </HeaderS>
     </Container>
   );
 };

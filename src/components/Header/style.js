@@ -7,9 +7,16 @@ export const Container = styled.div`
   position: fixed;
   top: 0;
   display: flex;
+  justify-content: center;
+  width: 100%;
+`;
+
+export const HeaderS = styled.header`
+  width: 100%;
+  max-width: 800px;
+  display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
   padding: 1.2rem 2rem;
 `;
 

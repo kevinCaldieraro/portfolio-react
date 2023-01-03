@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { Container, Title, ProgressbarContainer, Progressbar, Form, Label, Input, Message, Button } from './style';
+import { Container, Title, ProgressbarContainer, Progressbar, Form, Label, Input, Message, Button, Sending } from './style';
 
 const Main = () => {
   const [control, setControl] = useState({nameControl: false, emailControl: false, messageControl: false})
@@ -8,9 +8,12 @@ const Main = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const [sending, setSending] = useState(false);
 
   const handleSubmit = e => {
     e.preventDefault();
+    setSending(true);
+    
     fetch('https://api.sheetmonkey.io/form/cqz4b1uogro4siFfCkVxQH', {
       method: 'post',
       headers: {
@@ -18,8 +21,17 @@ const Main = () => {
         'Content-type': 'application/json'
       },
       body: JSON.stringify({ name, email, message })
+    }).then(() => {
+      setSending(false)
+      cleanFields();
     });
   };
+
+  const cleanFields = () => {
+    setName('');
+    setEmail('');
+    setMessage('');
+  }
 
   useEffect(() => {
     if(name.length >= 2 && control.nameControl === false) {
@@ -50,9 +62,13 @@ const Main = () => {
   const BtnSubmit = () => {
     if (width === 100) {
       return <Button type="submit" enabled>Enviar</Button>
-    } else {
+    } else{
       return <Button type="submit" disabled>Enviar</Button>
     }
+  }
+
+  if(sending) {
+    return <Sending><p>Enviando...</p></Sending>;
   }
 
   return (

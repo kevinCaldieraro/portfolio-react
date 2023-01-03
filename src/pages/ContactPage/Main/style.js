@@ -3,8 +3,8 @@ import styled from 'styled-components';
 export const Container = styled.div`
   padding: 0 2rem;
   flex: 1;
-  display: flex;
-  flex-direction: column;
+  width: 100%;
+  max-width: 800px;
 `;
 
 export const Title = styled.h2`
@@ -86,4 +86,14 @@ export const Button = styled.button`
       opacity: 0.7;
     }
   }
+`;
+
+export const Sending = styled.div`
+  background: ${props => props.theme.colors.background};
+  min-height: 100vh;
+  min-width: 100vw;
+  position: absolute;
+  top: 0;
+  display: grid;
+  place-content: center;
 `;

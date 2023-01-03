@@ -3,12 +3,17 @@ import styled from 'styled-components';
 export const Container = styled.main`
   padding: 0 2rem;
   flex: 1;
+  max-width: 800px;
 `;
 
 export const Title = styled.h1`
   margin-top: 0;
   font-size: 2.5rem;
   line-height: 3.3rem;
+
+  @media screen and (max-width: 375px) {
+    font-size: 2rem;
+  }
 `;
 
 export const Name = styled.span`
@@ -50,4 +55,5 @@ export const SocialMedia = styled.a`
 
 export const IllustrationHome = styled.img`
   width: 80%;
+  max-width: 500px;
 `;
