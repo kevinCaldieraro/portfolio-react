@@ -1,9 +1,24 @@
 import React, { useState, useEffect } from 'react';
 
-import { Container, Title, ProgressbarContainer, Progressbar, Form, Label, Input, Message, Button, Sending } from './style';
+import {
+  Container,
+  Title,
+  ProgressbarContainer,
+  Progressbar,
+  Form,
+  Label,
+  Input,
+  Message,
+  Button,
+  Sending
+} from './style';
 
 const Main = () => {
-  const [control, setControl] = useState({nameControl: false, emailControl: false, messageControl: false})
+  const [control, setControl] = useState({
+    nameControl: false,
+    emailControl: false,
+    messageControl: false
+  });
   const [width, setWidth] = useState(0);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -13,16 +28,16 @@ const Main = () => {
   const handleSubmit = e => {
     e.preventDefault();
     setSending(true);
-    
+
     fetch('https://api.sheetmonkey.io/form/cqz4b1uogro4siFfCkVxQH', {
       method: 'post',
       headers: {
-        'Accept': 'application/json',
+        Accept: 'application/json',
         'Content-type': 'application/json'
       },
       body: JSON.stringify({ name, email, message })
     }).then(() => {
-      setSending(false)
+      setSending(false);
       cleanFields();
     });
   };
@@ -31,44 +46,62 @@ const Main = () => {
     setName('');
     setEmail('');
     setMessage('');
-  }
+  };
 
   useEffect(() => {
-    if(name.length >= 2 && control.nameControl === false) {
+    if (name.length >= 2 && control.nameControl === false) {
       setWidth(width + 33);
-      setControl({...control, nameControl: true});
+      setControl({ ...control, nameControl: true });
     } else if (name.length < 2 && control.nameControl === true) {
       setWidth(width - 33);
-      setControl({...control, nameControl: false});
+      setControl({ ...control, nameControl: false });
     }
 
-    if(email.length >= 2 && control.emailControl === false) {
+    if (
+      email.match(/\w{2,}@[a-zA-Z]{2,}\.[a-zA-Z]{2,}/) &&
+      control.emailControl === false
+    ) {
       setWidth(width + 33);
-      setControl({...control, emailControl: true});
-    } else if (email.length < 2 && control.emailControl === true) {
+      setControl({ ...control, emailControl: true });
+    } else if (
+      !email.match(/\w{2,}@[a-zA-Z]{2,}\.[a-zA-Z]{2,}/) &&
+      control.emailControl === true
+    ) {
       setWidth(width - 33);
-      setControl({...control, emailControl: false});
+      setControl({ ...control, emailControl: false });
     }
 
-    if(message.length >= 3 && control.messageControl === false) {
+    if (message.length >= 14 && control.messageControl === false) {
       setWidth(width + 34);
-      setControl({...control, messageControl: true});
-    } else if (message.length < 3 && control.messageControl === true) {
+      setControl({ ...control, messageControl: true });
+    } else if (message.length < 14 && control.messageControl === true) {
       setWidth(width - 34);
-      setControl({...control, messageControl: false});
+      setControl({ ...control, messageControl: false });
     }
   }, [width, control, name, email, message]);
 
   const BtnSubmit = () => {
     if (width === 100) {
-      return <Button type="submit" enabled>Enviar</Button>
-    } else{
-      return <Button type="submit" disabled>Enviar</Button>
+      return (
+        <Button type="submit" enabled>
+          Enviar
+        </Button>
+      );
+    } else {
+      return (
+        <Button type="submit" disabled>
+          Enviar
+        </Button>
+      );
     }
-  }
+  };
 
-  if(sending) {
-    return <Sending><p>Enviando...</p></Sending>;
+  if (sending) {
+    return (
+      <Sending>
+        <p>Enviando...</p>
+      </Sending>
+    );
   }
 
   return (
