@@ -3,7 +3,15 @@ import styled from 'styled-components';
 export const Container = styled.main`
   padding: 0 2rem;
   flex: 1;
-  max-width: 800px;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @media screen and (min-width: 1150px) {
+    flex-direction: row;
+    align-items: center;
+  }
 `;
 
 export const Title = styled.h1`
@@ -23,16 +31,28 @@ export const Name = styled.span`
   -webkit-text-fill-color: transparent;
 `;
 
-export const Content = styled.div`
+export const MainContent = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 2rem;
+
+  @media screen and (min-width: 1150px) {
+    width: 55%;
+  }
+`;
+
+export const Content = styled.div`
+  text-align: center;
+  @media screen and (min-width: 1150px) {
+    width: 45%;
+    text-align: right;
+  }
 `;
 
 export const Description = styled.p`
   line-height: 1.5rem;
   text-align: justify;
+  margin-bottom: 2rem;
 `;
 
 export const SocialMedias = styled.div`
@@ -55,5 +75,9 @@ export const SocialMedia = styled.a`
 
 export const IllustrationHome = styled.img`
   width: 80%;
-  max-width: 500px;
+  max-width: 400px;
+
+  @media screen and (min-width: 900px) {
+    /* items-self: center; */
+  }
 `;

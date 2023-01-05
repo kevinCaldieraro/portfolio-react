@@ -4,6 +4,7 @@ import {
   Container,
   Title,
   Name,
+  MainContent,
   Content,
   Description,
   SocialMedias,
@@ -17,10 +18,10 @@ import illustrationHome from '../../../assets/images/homeImgs/illustrationHome.p
 
 const Main = () => (
   <Container>
-    <Title>
-      Olá! Eu sou <Name>Kevin Caldieraro</Name>. Desenvolvedor Frontend.
-    </Title>
-    <Content>
+    <MainContent>
+      <Title>
+        Olá! Eu sou <Name>Kevin Caldieraro</Name>. Desenvolvedor Frontend.
+      </Title>
       <Description>
         Finalizei meu EMI Técnico em Informática no IFRS em 2021 e atualmente
         atuo como desenvolvedor Frontend. Minha maior motivação para estudar
@@ -43,6 +44,8 @@ const Main = () => (
           <ImLinkedin size={35} />
         </SocialMedia>
       </SocialMedias>
+    </MainContent>
+    <Content>
       <IllustrationHome
         src={illustrationHome}
         alt="Boneco sentado em uma mesa com um computador"

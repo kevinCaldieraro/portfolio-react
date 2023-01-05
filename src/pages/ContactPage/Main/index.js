@@ -6,6 +6,8 @@ import {
   ProgressbarContainer,
   Progressbar,
   Form,
+  SenderInfos,
+  InputGroup,
   Label,
   Input,
   Message,
@@ -24,6 +26,7 @@ const Main = () => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [sending, setSending] = useState(false);
+  const [sended, setSended] = useState(false);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -38,6 +41,10 @@ const Main = () => {
       body: JSON.stringify({ name, email, message })
     }).then(() => {
       setSending(false);
+      setSended(true);
+      setTimeout(() => {
+        setSended(false);
+      }, 1500);
       cleanFields();
     });
   };
@@ -104,6 +111,14 @@ const Main = () => {
     );
   }
 
+  if (sended) {
+    return (
+      <Sending>
+        <p>Enviado!</p>
+      </Sending>
+    );
+  }
+
   return (
     <Container>
       <Title>Contato</Title>
@@ -111,28 +126,30 @@ const Main = () => {
         <Progressbar width={`${width}%`} />
       </ProgressbarContainer>
       <Form onSubmit={handleSubmit}>
-        <div>
-          <Label htmlFor="name">Insira seu nome</Label>
-          <Input
-            type="text"
-            name="name"
-            id="name"
-            placeholder="Nome"
-            value={name}
-            onChange={e => setName(e.target.value)}
-          />
-        </div>
-        <div>
-          <Label htmlFor="email">Insira seu email</Label>
-          <Input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-          />
-        </div>
+        <SenderInfos>
+          <InputGroup className="nameGroup">
+            <Label htmlFor="name">Insira seu nome</Label>
+            <Input
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Nome"
+              value={name}
+              onChange={e => setName(e.target.value)}
+            />
+          </InputGroup>
+          <InputGroup>
+            <Label htmlFor="email">Insira seu email</Label>
+            <Input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Email"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+            />
+          </InputGroup>
+        </SenderInfos>
         <div>
           <Label htmlFor="message">Motivo do contato</Label>
           <Message

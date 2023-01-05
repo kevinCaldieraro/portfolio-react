@@ -22,6 +22,10 @@ export const Images = styled.div`
   flex-direction: column;
   gap: 1rem;
   margin-bottom: 0.5rem;
+
+  @media screen and (min-width: 800px) {
+    flex-direction: row;
+  }
 `;
 
 export const Image = styled.img`
@@ -29,7 +33,7 @@ export const Image = styled.img`
 `;
 
 export const View = styled.a`
-  align-self: center;
+  align-self: flex-start;
   margin-top: 1rem;
   padding: 0.3rem 1.5rem;
   text-decoration: none;
