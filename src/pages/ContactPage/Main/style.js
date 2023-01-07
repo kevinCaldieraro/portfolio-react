@@ -115,23 +115,3 @@ export const Button = styled.button`
     }
   }
 `;
-
-export const Sending = styled.div`
-  background: ${props => props.theme.colors.background};
-  min-height: 100vh;
-  min-width: 100vw;
-  position: absolute;
-  top: 0;
-  display: grid;
-  place-content: center;
-`;
-
-export const Sended = styled.div`
-  background: ${props => props.theme.colors.background};
-  min-height: 100vh;
-  min-width: 100vw;
-  position: absolute;
-  top: 0;
-  display: grid;
-  place-content: center;
-`;

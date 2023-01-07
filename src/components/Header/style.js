@@ -9,6 +9,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
+  z-index: 10;
 `;
 
 export const HeaderS = styled.header`

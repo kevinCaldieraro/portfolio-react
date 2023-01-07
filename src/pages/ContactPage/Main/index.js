@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import {
   Container,
@@ -11,26 +11,22 @@ import {
   Label,
   Input,
   Message,
-  Button,
-  Sending
+  Button
 } from './style';
 
 const Main = () => {
-  const [control, setControl] = useState({
-    nameControl: false,
-    emailControl: false,
-    messageControl: false
+  const [fields, setFields] = useState({
+    name: '',
+    email: '',
+    message: ''
   });
-  const [width, setWidth] = useState(0);
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
   const [sending, setSending] = useState(false);
   const [sended, setSended] = useState(false);
 
   const handleSubmit = e => {
     e.preventDefault();
     setSending(true);
+    const { name, email, message } = fields;
 
     fetch('https://api.sheetmonkey.io/form/cqz4b1uogro4siFfCkVxQH', {
       method: 'post',
@@ -44,123 +40,91 @@ const Main = () => {
       setSended(true);
       setTimeout(() => {
         setSended(false);
+        cleanFields();
       }, 1500);
-      cleanFields();
     });
   };
 
+  const handleFields = ev => {
+    const { name, value } = ev.target;
+    setFields({ ...fields, [name]: value });
+  };
+
   const cleanFields = () => {
-    setName('');
-    setEmail('');
-    setMessage('');
+    setFields({
+      name: '',
+      email: '',
+      message: ''
+    });
   };
 
-  useEffect(() => {
-    if (name.length >= 2 && control.nameControl === false) {
-      setWidth(width + 33);
-      setControl({ ...control, nameControl: true });
-    } else if (name.length < 2 && control.nameControl === true) {
-      setWidth(width - 33);
-      setControl({ ...control, nameControl: false });
+  const width = () => {
+    let width = 0;
+    let pattern =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    if (fields.name.length > 1) {
+      width += 33;
+    }
+    if (fields.email.match(pattern)) {
+      width += 33;
+    }
+    if (fields.message.length > 13) {
+      width += 34;
     }
 
-    if (
-      email.match(/\w{2,}@[a-zA-Z]{2,}\.[a-zA-Z]{2,}/) &&
-      control.emailControl === false
-    ) {
-      setWidth(width + 33);
-      setControl({ ...control, emailControl: true });
-    } else if (
-      !email.match(/\w{2,}@[a-zA-Z]{2,}\.[a-zA-Z]{2,}/) &&
-      control.emailControl === true
-    ) {
-      setWidth(width - 33);
-      setControl({ ...control, emailControl: false });
-    }
-
-    if (message.length >= 14 && control.messageControl === false) {
-      setWidth(width + 34);
-      setControl({ ...control, messageControl: true });
-    } else if (message.length < 14 && control.messageControl === true) {
-      setWidth(width - 34);
-      setControl({ ...control, messageControl: false });
-    }
-  }, [width, control, name, email, message]);
-
-  const BtnSubmit = () => {
-    if (width === 100) {
-      return (
-        <Button type="submit" enabled>
-          Enviar
-        </Button>
-      );
-    } else {
-      return (
-        <Button type="submit" disabled>
-          Enviar
-        </Button>
-      );
-    }
+    return width;
   };
-
-  if (sending) {
-    return (
-      <Sending>
-        <p>Enviando...</p>
-      </Sending>
-    );
-  }
-
-  if (sended) {
-    return (
-      <Sending>
-        <p>Enviado!</p>
-      </Sending>
-    );
-  }
 
   return (
     <Container>
       <Title>Contato</Title>
       <ProgressbarContainer>
-        <Progressbar width={`${width}%`} />
+        <Progressbar width={`${width()}%`} />
       </ProgressbarContainer>
       <Form onSubmit={handleSubmit}>
         <SenderInfos>
           <InputGroup className="nameGroup">
-            <Label htmlFor="name">Insira seu nome</Label>
+            <Label htmlFor="name">Remetente</Label>
             <Input
               type="text"
               name="name"
               id="name"
               placeholder="Nome"
-              value={name}
-              onChange={e => setName(e.target.value)}
+              value={fields.name}
+              onChange={ev => handleFields(ev)}
+              disabled={sending || sended}
             />
           </InputGroup>
           <InputGroup>
-            <Label htmlFor="email">Insira seu email</Label>
+            <Label htmlFor="email">Email</Label>
             <Input
               type="email"
               name="email"
               id="email"
-              placeholder="Email"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
+              placeholder="email@email.com"
+              value={fields.email}
+              onChange={ev => handleFields(ev)}
+              disabled={sending || sended}
             />
           </InputGroup>
         </SenderInfos>
         <div>
-          <Label htmlFor="message">Motivo do contato</Label>
+          <Label htmlFor="message">Assunto</Label>
           <Message
             name="message"
             id="message"
             placeholder="Mensagem"
-            value={message}
-            onChange={e => setMessage(e.target.value)}
+            value={fields.message}
+            onChange={ev => handleFields(ev)}
+            disabled={sending || sended}
           />
         </div>
-        <BtnSubmit />
+        <Button type="submit" disabled={width() !== 100 || sending || sended}>
+          {!sending && !sended && 'Enviar'}
+          {sending && 'Enviando...'}
+          {sended && 'Enviado!'}
+        </Button>
       </Form>
     </Container>
   );
