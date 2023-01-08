@@ -4,6 +4,7 @@ export const Container = styled.div`
   display: grid;
   gap: 2.5rem;
   grid-template-columns: repeat(1, minmax(0, 1fr));
+  margin-bottom: 2rem;
 `;
 
 export const Card = styled.div`
@@ -23,13 +24,18 @@ export const Images = styled.div`
   gap: 1rem;
   margin-bottom: 0.5rem;
 
-  @media screen and (min-width: 800px) {
+  @media screen and (min-width: 900px) {
     flex-direction: row;
   }
 `;
 
 export const Image = styled.img`
   width: 100%;
+`;
+
+export const Description = styled.p`
+  text-align: justify;
+  line-height: 1.5rem;
 `;
 
 export const View = styled.a`

@@ -32,13 +32,9 @@ const theme = {
     carbonDark: '#3b3a3e',
 
     // Default colors
-    primary: '#2ecc71',
-    secondary: '#ecf0f1',
-    danger: '#f37272',
     light: '#ecf0f1',
     dark: '#233240',
     background: 'linear-gradient(104.3deg, #121212 33.84%, #1e3a8a 162.79%)',
-    container: '#2d2d2d',
     text: '#fff',
     link: '#3498db'
   },
@@ -49,13 +45,6 @@ const theme = {
     large: '2rem',
     title: '1.5rem',
     subtitle: '1.3rem'
-  },
-  breakpoints: {
-    xs: '0',
-    sm: '576px',
-    md: '768px',
-    xl: '1200px',
-    xxl: '1400px'
   }
 };
 

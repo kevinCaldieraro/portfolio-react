@@ -14,6 +14,33 @@ export const Container = styled.main`
   }
 `;
 
+export const MainContent = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  & > blockquote {
+    background: ${props => props.theme.colors.carbonDark};
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border-left: 5px solid ${props => props.theme.colors.carbon};
+
+    & > p {
+      font-size: 0.9rem;
+      line-height: 1.3rem;
+      text-align: justify;
+    }
+
+    & > p > i {
+      margin: 0rem 0.35rem;
+    }
+  }
+
+  @media screen and (min-width: 1150px) {
+    width: 55%;
+  }
+`;
+
 export const Title = styled.h1`
   margin-top: 0;
   font-size: 2.5rem;
@@ -29,24 +56,6 @@ export const Name = styled.span`
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-`;
-
-export const MainContent = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-
-  @media screen and (min-width: 1150px) {
-    width: 55%;
-  }
-`;
-
-export const Content = styled.div`
-  text-align: center;
-  @media screen and (min-width: 1150px) {
-    width: 45%;
-    text-align: right;
-  }
 `;
 
 export const Description = styled.p`
@@ -73,11 +82,15 @@ export const SocialMedia = styled.a`
   }
 `;
 
+export const Content = styled.div`
+  text-align: center;
+  @media screen and (min-width: 1150px) {
+    width: 45%;
+    text-align: right;
+  }
+`;
+
 export const IllustrationHome = styled.img`
   width: 80%;
   max-width: 400px;
-
-  @media screen and (min-width: 900px) {
-    /* items-self: center; */
-  }
 `;

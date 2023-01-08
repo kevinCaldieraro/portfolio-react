@@ -1,6 +1,14 @@
 import React from 'react';
 
-import { Container, Card, Name, Images, Image, View } from './style';
+import {
+  Container,
+  Card,
+  Name,
+  Images,
+  Image,
+  Description,
+  View
+} from './style';
 
 import projects from './projects';
 
@@ -12,7 +20,7 @@ const Projects = () => {
         <Image src={imgs[0]} />
         <Image src={imgs[1]} />
       </Images>
-      <p>{description}</p>
+      <Description>{description}</Description>
       <View href={link} target="_blank">
         Ver
       </View>
