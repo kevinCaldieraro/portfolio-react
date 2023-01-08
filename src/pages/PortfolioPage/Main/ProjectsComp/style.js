@@ -24,13 +24,17 @@ export const Images = styled.div`
   gap: 1rem;
   margin-bottom: 0.5rem;
 
-  @media screen and (min-width: 900px) {
+  @media screen and (min-width: 800px) {
     flex-direction: row;
   }
 `;
 
 export const Image = styled.img`
   width: 100%;
+
+  @media screen and (min-width: 800px) {
+    width: 50%;
+  }
 `;
 
 export const Description = styled.p`
