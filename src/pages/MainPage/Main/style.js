@@ -46,7 +46,7 @@ export const Title = styled.h1`
   font-size: 2.5rem;
   line-height: 3.3rem;
 
-  @media screen and (max-width: 375px) {
+  @media screen and (max-width: 450px) {
     font-size: 2rem;
   }
 `;
@@ -62,6 +62,10 @@ export const Description = styled.p`
   line-height: 1.5rem;
   text-align: justify;
   margin-bottom: 2rem;
+
+  @media screen and (max-width: 450px) {
+    font-size: 1rem;
+  }
 `;
 
 export const SocialMedias = styled.div`
