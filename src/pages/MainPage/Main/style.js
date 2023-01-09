@@ -62,10 +62,6 @@ export const Description = styled.p`
   line-height: 1.5rem;
   text-align: justify;
   margin-bottom: 2rem;
-
-  @media screen and (max-width: 450px) {
-    font-size: 1rem;
-  }
 `;
 
 export const SocialMedias = styled.div`
