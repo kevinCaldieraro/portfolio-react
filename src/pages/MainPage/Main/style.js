@@ -34,6 +34,10 @@ export const MainContent = styled.div`
     & > p > i {
       margin: 0rem 0.35rem;
     }
+
+    & > p:nth-child(1) {
+      margin-bottom: 1rem;
+    }
   }
 
   @media screen and (min-width: 1150px) {

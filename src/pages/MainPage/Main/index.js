@@ -45,6 +45,9 @@ const Main = () => (
           </i>
           <ImQuotesRight size={15} />
         </p>
+        <p>
+          <i>- Christopher Gardner, À Procura da Felicidade.</i>
+        </p>
       </blockquote>
       <SocialMedias>
         <SocialMedia

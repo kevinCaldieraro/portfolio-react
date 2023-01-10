@@ -7,7 +7,7 @@ import { ImHeart } from 'react-icons/im';
 const Footer = () => (
   <Container>
     <p>
-      Feito com <ImHeart /> por Kevin Caldieraro
+      Feito com <ImHeart size={14} /> por Kevin Caldieraro
     </p>
   </Container>
 );
