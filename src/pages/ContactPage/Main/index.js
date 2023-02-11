@@ -2,17 +2,22 @@ import React, { useState } from 'react';
 
 import {
   Container,
+  FormContainer,
   Title,
   ProgressbarContainer,
   Progressbar,
   Form,
   SenderInfos,
+  MessageDiv,
   InputGroup,
   Label,
   Input,
   Message,
-  Button
+  Button,
+  Img
 } from './style';
+
+import img from '../../../assets/images/contactPageImgs/img0.svg';
 
 const Main = () => {
   const [fields, setFields] = useState({
@@ -78,54 +83,57 @@ const Main = () => {
 
   return (
     <Container>
-      <Title>Contato</Title>
-      <ProgressbarContainer>
-        <Progressbar width={`${width()}%`} />
-      </ProgressbarContainer>
-      <Form onSubmit={handleSubmit}>
-        <SenderInfos>
-          <InputGroup className="nameGroup">
-            <Label htmlFor="name">Remetente</Label>
-            <Input
-              type="text"
-              name="name"
-              id="name"
-              placeholder="Nome"
-              value={fields.name}
+      <FormContainer>
+        <Title>Contato</Title>
+        <ProgressbarContainer>
+          <Progressbar width={`${width()}%`} />
+        </ProgressbarContainer>
+        <Form onSubmit={handleSubmit}>
+          <SenderInfos>
+            <InputGroup className="nameGroup">
+              <Label htmlFor="name">Remetente</Label>
+              <Input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Nome"
+                value={fields.name}
+                onChange={ev => handleFields(ev)}
+                disabled={sending || sended}
+              />
+            </InputGroup>
+            <InputGroup>
+              <Label htmlFor="email">Email</Label>
+              <Input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="email@email.com"
+                value={fields.email}
+                onChange={ev => handleFields(ev)}
+                disabled={sending || sended}
+              />
+            </InputGroup>
+          </SenderInfos>
+          <MessageDiv>
+            <Label htmlFor="message">Assunto</Label>
+            <Message
+              name="message"
+              id="message"
+              placeholder="Mensagem"
+              value={fields.message}
               onChange={ev => handleFields(ev)}
               disabled={sending || sended}
             />
-          </InputGroup>
-          <InputGroup>
-            <Label htmlFor="email">Email</Label>
-            <Input
-              type="email"
-              name="email"
-              id="email"
-              placeholder="email@email.com"
-              value={fields.email}
-              onChange={ev => handleFields(ev)}
-              disabled={sending || sended}
-            />
-          </InputGroup>
-        </SenderInfos>
-        <div>
-          <Label htmlFor="message">Assunto</Label>
-          <Message
-            name="message"
-            id="message"
-            placeholder="Mensagem"
-            value={fields.message}
-            onChange={ev => handleFields(ev)}
-            disabled={sending || sended}
-          />
-        </div>
-        <Button type="submit" disabled={width() !== 100 || sending || sended}>
-          {!sending && !sended && 'Enviar'}
-          {sending && 'Enviando...'}
-          {sended && 'Enviado!'}
-        </Button>
-      </Form>
+          </MessageDiv>
+          <Button type="submit" disabled={width() !== 100 || sending || sended}>
+            {!sending && !sended && 'Enviar'}
+            {sending && 'Enviando...'}
+            {sended && 'Enviado!'}
+          </Button>
+        </Form>
+      </FormContainer>
+      <Img src={img} alt="" />
     </Container>
   );
 };

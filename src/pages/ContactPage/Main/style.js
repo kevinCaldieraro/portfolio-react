@@ -6,8 +6,10 @@ export const Container = styled.div`
   width: 100%;
   max-width: 1200px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
+  align-items: center;
+  gap: 5rem;
 `;
 
 export const Title = styled.h2`
@@ -38,16 +40,24 @@ export const Progressbar = styled.div`
   transition: 0.5s;
 `;
 
+export const FormContainer = styled.div`
+  width: 50%;
+
+  @media screen and (max-width: 1150px) {
+    width: auto;
+  }
+`;
+
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 1.3rem;
 `;
 
 export const SenderInfos = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  margin-bottom: 2.2rem;
 
   @media screen and (min-width: 650px) {
     flex-direction: row;
@@ -69,7 +79,7 @@ export const Label = styled.label`
 
 export const Input = styled.input`
   width: 100%;
-  padding: 0.2rem 0.5rem;
+  padding: 0.8rem 0.7rem;
   color: ${props => props.theme.colors.carbonDark};
 
   @media screen and (min-width: 1150px) {
@@ -81,12 +91,16 @@ export const Input = styled.input`
   }
 `;
 
+export const MessageDiv = styled.div`
+  margin-bottom: 4rem;
+`;
+
 export const Message = styled.textarea`
   width: 100%;
-  padding: 0.3rem 0.5rem;
+  padding: 0.8rem 0.7rem;
   color: ${props => props.theme.colors.carbonDark};
   resize: vertical;
-  min-height: 150px;
+  min-height: 200px;
 
   &::placeholder {
     color: ${props => props.theme.colors.metalDark};
@@ -94,7 +108,7 @@ export const Message = styled.textarea`
 `;
 
 export const Button = styled.button`
-  padding: 0.5rem 1.5rem;
+  padding: 0.8rem 3rem;
   align-self: center;
   border: none;
   border-radius: 3px;
@@ -113,5 +127,13 @@ export const Button = styled.button`
     &:hover {
       opacity: 0.7;
     }
+  }
+`;
+
+export const Img = styled.img`
+  width: 60%;
+
+  @media screen and (max-width: 1150px) {
+    display: none;
   }
 `;
