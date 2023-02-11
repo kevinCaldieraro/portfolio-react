@@ -27,7 +27,7 @@ export const MainContent = styled.div`
 
     & > p {
       font-size: 0.9rem;
-      line-height: 1.3rem;
+      line-height: 1.5rem;
       text-align: justify;
     }
 
@@ -63,8 +63,7 @@ export const Name = styled.span`
 `;
 
 export const Description = styled.p`
-  line-height: 1.5rem;
-  text-align: justify;
+  line-height: 1.9rem;
   margin-bottom: 2rem;
 `;
 
@@ -95,6 +94,9 @@ export const Content = styled.div`
 `;
 
 export const IllustrationHome = styled.img`
-  width: 80%;
-  max-width: 400px;
+  width: 95%;
+
+  @media screen and (max-width: 1150px) {
+    max-width: 500px;
+  }
 `;
