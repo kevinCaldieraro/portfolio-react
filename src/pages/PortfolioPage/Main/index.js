@@ -10,7 +10,7 @@ import { ImGithub } from 'react-icons/im';
 const Main = () => {
   return (
     <Container>
-      <Title id="Techs">Tecnologias utilizadas</Title>
+      <Title id="Techs">Tecnologias que utilizo</Title>
       <Techs />
       <Title id="Projetos">Projetos</Title>
       <Projects />
